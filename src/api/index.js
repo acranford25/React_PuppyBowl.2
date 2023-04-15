@@ -22,7 +22,7 @@ export async function fetchPuppy(playerId) {
 
 export async function postPuppy(newPuppy) {
   try {
-    const response = await fetch(`${PUPPYURL}`, {
+    const response = await fetch(`${PUPPYURL}players`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
