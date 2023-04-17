@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPuppies } from "../api";
-import { fetchPuppy } from "../api";
+import { deletePuppy } from "../api";
 import React from "react";
-import Puppy from "./Puppy";
 
-export default function AllPuppies({ fetchPuppy }) {
+export default function AllPuppies() {
   const [pups, setPups] = useState([]);
   const navigate = useNavigate();
 
@@ -35,7 +34,12 @@ export default function AllPuppies({ fetchPuppy }) {
               >
                 <button type="onClick">See Details</button>
               </form>
-              <form>
+              <form
+                onClick={(event) => {
+                  event.preventDefault();
+                  deletePuppy(pup.id);
+                }}
+              >
                 <button type="onClick">Delete</button>
               </form>
             </div>

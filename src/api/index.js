@@ -35,3 +35,19 @@ export async function postPuppy(newPuppy) {
     console.log("trouble posting puppy", error);
   }
 }
+
+export async function deletePuppy(playerId) {
+  try {
+    const response = await fetch(`${PUPPYURL}players/${playerId}`, {
+      method: "DELETE",
+      headerss: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("trouble deleting puppy", error);
+  }
+}
